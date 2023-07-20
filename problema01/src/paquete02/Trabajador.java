@@ -48,4 +48,18 @@ public class Trabajador {
         mesSueldo = mS;
     }
 
+    @Override
+    public String toString() {
+        return String.format(""
+                + "Cedula: %s\n"
+                + "Nombre: %s\n"
+                + "Correo: %s\n"
+                + "Sueldo: %s\n"
+                + "Mes del Sueldo: %s\n\n",
+                obtenerCedula(),
+                obtenerNombre(),
+                obtenerCorreo(),
+                obtenerSueldo(),
+                obtenerMesSueldo());
+    }
 }

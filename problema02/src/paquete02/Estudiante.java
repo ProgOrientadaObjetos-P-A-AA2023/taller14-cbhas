@@ -57,4 +57,20 @@ public class Estudiante {
         promedio = (calificacion1 + calificacion2 + calificacion3) / 3;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s %s\n"
+                + "\tCalificaciones:\n"
+                + "\t%.1f\n"
+                + "\t%.1f\n"
+                + "\t%.1f\n"
+                + "\tPromedio: %.1f\n\n",
+                nombre,
+                apellido,
+                calificacion1,
+                calificacion2,
+                calificacion3,
+                promedio);
+    }
+
 }

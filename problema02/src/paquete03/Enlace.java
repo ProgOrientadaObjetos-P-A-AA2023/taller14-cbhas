@@ -15,12 +15,8 @@ public class Enlace {
     public void establecerConexion() {
 
         try {
-            // db parameters  
-            String url = "jdbc:sqlite:bd/base001.base";
-            // create a connection to the database  
+            String url = "jdbc:sqlite:db/base001.base";
             conn = DriverManager.getConnection(url);
-            // System.out.println(conn.isClosed());
-            // System.out.println("Connection to SQLite has been established.");  
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -33,7 +29,6 @@ public class Enlace {
     }
 
     public void insertarEstudiante(Estudiante estudiante) {
-
         try {
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
@@ -47,15 +42,18 @@ public class Enlace {
                     estudiante.obtenerCalificacion3());
             statement.executeUpdate(data);
             obtenerConexion().close();
+
         } catch (SQLException e) {
             System.out.println("Exception:");
             System.out.println(e.getMessage());
 
         }
+
     }
 
     public ArrayList<Estudiante> obtenerDataEstudiante() {
         ArrayList<Estudiante> lista = new ArrayList<>();
+
         try {
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
@@ -69,15 +67,18 @@ public class Enlace {
                 estudiante.establecerCalificacion1(rs.getDouble("calificacion1"));
                 estudiante.establecerCalificacion2(rs.getDouble("calificacion2"));
                 estudiante.establecerCalificacion3(rs.getDouble("calificacion3"));
+                estudiante.calcularPromedio();
                 lista.add(estudiante);
             }
 
             obtenerConexion().close();
+
         } catch (SQLException e) {
-            System.out.println("Exception: insertarCiudad");
+            System.out.println("Exception: insertarEstudiante");
             System.out.println(e.getMessage());
 
         }
+
         return lista;
     }
 

@@ -16,7 +16,7 @@ public class Enlace {
 
         try {
             // db parameters  
-            String url = "jdbc:sqlite:bd/base01.db";
+            String url = "jdbc:sqlite:db/base01.db";
             // create a connection to the database  
             conn = DriverManager.getConnection(url);
             // System.out.println(conn.isClosed());
@@ -74,7 +74,7 @@ public class Enlace {
 
             obtenerConexion().close();
         } catch (SQLException e) {
-            System.out.println("Exception: insertarCiudad");
+            System.out.println("Exception: insertarTrabajador");
             System.out.println(e.getMessage());
 
         }
